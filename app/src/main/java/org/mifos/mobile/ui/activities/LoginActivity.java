@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.mifos.mobile.R;
+import org.mifos.mobile.models.payload.LoginPayload;
 import org.mifos.mobile.presenters.LoginPresenter;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.views.LoginView;
@@ -134,7 +135,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
         final String password = tilPassword.getEditText().getEditableText().toString();
 
         if (Network.isConnected(this)) {
-            loginPresenter.login(username, password);
+            LoginPayload payload = new LoginPayload();
+            payload.setUsername(username);
+            payload.setPassword(password);
+            loginPresenter.login(payload);
         } else {
             Toaster.show(llLogin, getString(R.string.no_internet_connection));
         }

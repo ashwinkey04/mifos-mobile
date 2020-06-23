@@ -11,6 +11,7 @@ import org.mifos.mobile.injection.ApplicationContext;
 import org.mifos.mobile.models.Page;
 import org.mifos.mobile.models.User;
 import org.mifos.mobile.models.client.Client;
+import org.mifos.mobile.models.payload.LoginPayload;
 import org.mifos.mobile.presenters.base.BasePresenter;
 import org.mifos.mobile.ui.views.LoginView;
 import org.mifos.mobile.utils.Constants;
@@ -73,11 +74,11 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      * @param username Username of the user trying to login.
      * @param password Password of the user trying to login.
      */
-    public void login(final String username, final String password) {
+    public void login(LoginPayload loginPayload) {
         checkViewAttached();
-        if (isCredentialsValid(username, password)) {
+        if (isCredentialsValid(loginPayload)) {
             getMvpView().showProgress();
-            compositeDisposable.add(dataManager.login(username, password)
+            compositeDisposable.add(dataManager.login(loginPayload)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribeWith(new DisposableObserver<User>() {
@@ -174,7 +175,9 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     }
 
 
-    private boolean isCredentialsValid(final String username, final String password) {
+    private boolean isCredentialsValid(final LoginPayload loginPayload) {
+        final String username = loginPayload.getUsername();
+        final String password = loginPayload.getPassword();
         boolean credentialValid = true;
         final Resources resources = context.getResources();
         final String correctUsername = username.replaceFirst("\\s++$", "").trim();

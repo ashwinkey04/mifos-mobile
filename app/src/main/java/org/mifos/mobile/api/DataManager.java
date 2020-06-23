@@ -3,6 +3,7 @@ package org.mifos.mobile.api;
 import org.mifos.mobile.FakeRemoteDataSource;
 import org.mifos.mobile.api.local.DatabaseHelper;
 import org.mifos.mobile.api.local.PreferencesHelper;
+import org.mifos.mobile.api.services.AuthenticationService;
 import org.mifos.mobile.models.Charge;
 import org.mifos.mobile.models.client.Client;
 import org.mifos.mobile.models.guarantor.GuarantorApplicationPayload;
@@ -28,6 +29,7 @@ import org.mifos.mobile.models.client.ClientAccounts;
 import org.mifos.mobile.models.notification.NotificationUserDetail;
 import org.mifos.mobile.models.payload.LoansPayload;
 import org.mifos.mobile.models.payload.TransferPayload;
+import org.mifos.mobile.models.payload.LoginPayload;
 import org.mifos.mobile.models.register.RegisterPayload;
 import org.mifos.mobile.models.register.UserVerify;
 import org.mifos.mobile.models.templates.account.AccountOptionsTemplate;
@@ -68,8 +70,8 @@ public class DataManager {
         clientId = this.preferencesHelper.getClientId();
     }
 
-    public Observable<User> login(String username, String password) {
-        return baseApiManager.getAuthenticationApi().authenticate(username, password);
+    public Observable<User> login(LoginPayload loginPayload) {
+        return baseApiManager.getAuthenticationApi().authenticate(loginPayload);
     }
 
     public Observable<Page<Client>> getClients() {
