@@ -3,9 +3,8 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.oss.licenses.plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 apply from: '../config/quality/quality.gradle'
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -76,7 +75,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.dbflowVersion"
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.dbflowVersion"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.dbflowVersion"
     implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.dbflowVersion"
 
@@ -109,16 +108,18 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
 
     //Dagger dependencies
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     compileOnly 'javax.annotation:jsr250-api:1.0'                //Required by Dagger2
 
     //Butter Knife
-    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     implementation('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true
     }
+    //Annotation library
+    implementation "androidx.annotation:annotation:1.1.0"
 
     //qr code
     implementation "com.google.zxing:core:$rootProject.zxingcoreVersion"
@@ -132,7 +133,7 @@ dependencies {
 
     //multidex
     implementation "androidx.multidex:multidex:$rootProject.multiDexVersion"
-    
+
     //TableView
     implementation "com.evrencoskun.library:tableview:$rootProject.tableViewVersion"
 

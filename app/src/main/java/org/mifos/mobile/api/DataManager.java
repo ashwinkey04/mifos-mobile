@@ -3,7 +3,6 @@ package org.mifos.mobile.api;
 import org.mifos.mobile.FakeRemoteDataSource;
 import org.mifos.mobile.api.local.DatabaseHelper;
 import org.mifos.mobile.api.local.PreferencesHelper;
-import org.mifos.mobile.api.services.AuthenticationService;
 import org.mifos.mobile.models.Charge;
 import org.mifos.mobile.models.client.Client;
 import org.mifos.mobile.models.guarantor.GuarantorApplicationPayload;
