@@ -28,8 +28,8 @@ import javax.inject.Inject
  * @since 05/06/16
  */
 class LoginPresenter @Inject constructor(private val dataManager: DataManager, @ApplicationContext context: Context?) : BasePresenter<LoginView?>(context) {
-    private val preferencesHelper: PreferencesHelper
-    private val compositeDisposable: CompositeDisposable
+    private val preferencesHelper: PreferencesHelper = dataManager.preferencesHelper
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     override fun attachView(mvpView: LoginView?) {
         super.attachView(mvpView)
     }
@@ -46,13 +46,13 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
      * the server and then persist the authentication data if we successfully
      * authenticate the credentials or notify the view about any errors.
      */
-    fun login(loginPayload: LoginPayload) {
+    fun login(loginPayload: LoginPayload?) {
         checkViewAttached()
         if (isCredentialsValid(loginPayload)) {
             mvpView!!.showProgress()
-            compositeDisposable.add(dataManager.login(loginPayload)!!
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeOn(Schedulers.io())
+            compositeDisposable.add(dataManager.login(loginPayload)
+                    ?.observeOn(AndroidSchedulers.mainThread())
+                    ?.subscribeOn(Schedulers.io())!!
                     .subscribeWith(object : DisposableObserver<User?>() {
                         override fun onComplete() {}
                         override fun onError(e: Throwable) {
@@ -130,9 +130,9 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
     }
 
     @SuppressLint("StringFormatInvalid", "StringFormatMatches")
-    private fun isCredentialsValid(loginPayload: LoginPayload): Boolean {
-        val username:String = loginPayload.username.toString()
-        val password:String = loginPayload.password.toString()
+    private fun isCredentialsValid(loginPayload: LoginPayload?): Boolean {
+        val username:String = loginPayload?.username.toString()
+        val password:String = loginPayload?.password.toString()
         var credentialValid = true
         val resources = context.resources
         val correctUsername = username.replaceFirst("\\s++$".toRegex(), "").trim { it <= ' ' }
@@ -192,17 +192,4 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                 preferencesHelper.token)
     }
 
-    /**
-     * Initialises the LoginPresenter by automatically injecting an instance of
-     * [DataManager] and [Context].
-     *
-     * @param dataManager DataManager class that provides access to the data
-     * via the API.
-     * @param context     Context of the view attached to the presenter. In this case
-     * it is that of an [androidx.appcompat.app.AppCompatActivity]
-     */
-    init {
-        preferencesHelper = dataManager.preferencesHelper
-        compositeDisposable = CompositeDisposable()
-    }
 }

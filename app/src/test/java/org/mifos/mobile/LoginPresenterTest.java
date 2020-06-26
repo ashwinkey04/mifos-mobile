@@ -65,6 +65,8 @@ public class LoginPresenterTest {
         user = FakeRemoteDataSource.getUser();
         clientPage = FakeRemoteDataSource.getClients();
         noClientPage = FakeRemoteDataSource.getNoClients();
+
+        loginPayload = FakeRemoteDataSource.getLoginPayload();
     }
 
     @Test
