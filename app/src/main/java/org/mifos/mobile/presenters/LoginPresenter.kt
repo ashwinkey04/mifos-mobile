@@ -11,6 +11,7 @@ import org.mifos.mobile.R
 import org.mifos.mobile.api.BaseApiManager
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.api.local.PreferencesHelper
+import org.mifos.mobile.models.payload.LoginPayload
 import org.mifos.mobile.injection.ApplicationContext
 import org.mifos.mobile.models.Page
 import org.mifos.mobile.models.User
@@ -19,8 +20,6 @@ import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.MFErrorParser
-import org.mifos.mobile.models.payload.LoginPayload
-
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -46,15 +45,12 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
      * If there are no errors, then we attempt to authenticate the user from
      * the server and then persist the authentication data if we successfully
      * authenticate the credentials or notify the view about any errors.
-     *
-     * @param username Username of the user trying to login.
-     * @param password Password of the user trying to login.
      */
     fun login(loginPayload: LoginPayload) {
         checkViewAttached()
         if (isCredentialsValid(loginPayload)) {
             mvpView!!.showProgress()
-            compositeDisposable.add(dataManager.login(loginPayload)
+            compositeDisposable.add(dataManager.login(loginPayload)!!
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribeWith(object : DisposableObserver<User?>() {
@@ -103,7 +99,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
         compositeDisposable.add(dataManager.clients
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribeWith(object : DisposableObserver<Page<Client?>?>() {
+                .subscribeWith(object : DisposableObserver<Page<Client>?>() {
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
                         mvpView!!.hideProgress()
@@ -116,7 +112,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                         reInitializeService()
                     }
 
-                    override fun onNext(clientPage: Page<Client?>) {
+                    override fun onNext(clientPage: Page<Client>) {
                         mvpView!!.hideProgress()
                         if (clientPage.pageItems.isNotEmpty()) {
                             val clientId = clientPage.pageItems[0]!!.id.toLong()
@@ -135,33 +131,40 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
 
     @SuppressLint("StringFormatInvalid", "StringFormatMatches")
     private fun isCredentialsValid(loginPayload: LoginPayload): Boolean {
-        val username = loginPayload.username
-        val password = loginPayload.password
+        val username:String = loginPayload.username.toString()
+        val password:String = loginPayload.password.toString()
         var credentialValid = true
         val resources = context.resources
-        val correctUsername = username!!.replaceFirst("\\s++$".toRegex(), "").trim { it <= ' ' }
-        if (username == null || username.matches("\\s*".toRegex()) || username.isEmpty()) {
-            mvpView!!.showUsernameError(context.getString(R.string.error_validation_blank,
-                    context.getString(R.string.username)))
-            credentialValid = false
-        } else if (username.length < 5) {
-            mvpView!!.showUsernameError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
-            credentialValid = false
-        } else if (correctUsername.contains(" ")) {
-            mvpView!!.showUsernameError(context.getString(
-                    R.string.error_validation_cannot_contain_spaces,
-                    resources.getString(R.string.username),
-                    context.getString(R.string.not_contain_username)))
-            credentialValid = false
-        } else {
-            mvpView!!.clearUsernameError()
+        val correctUsername = username.replaceFirst("\\s++$".toRegex(), "").trim { it <= ' ' }
+        when {
+            username.isEmpty() -> {
+                mvpView!!.showUsernameError(context.getString(R.string.error_validation_blank,
+                        context.getString(R.string.username)))
+                credentialValid = false
+            }
+            username.length < 5 -> {
+                mvpView!!.showUsernameError(context.getString(R.string.error_validation_minimum_chars
+                        , resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
+                credentialValid = false
+            }
+            correctUsername.contains(" ") -> {
+                mvpView!!.showUsernameError(context.getString(
+                        R.string.error_validation_cannot_contain_spaces,
+                        resources.getString(R.string.username),
+                        context.getString(R.string.not_contain_username)))
+                credentialValid = false
+            }
+            else -> {
+                mvpView!!.clearUsernameError()
+            }
         }
         if (password == null || password.isEmpty()) {
             mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
                     context.getString(R.string.password)))
             credentialValid = false
         } else if (password.length < 6) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars
+                    , resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
             credentialValid = false
         } else {
             mvpView!!.clearPasswordError()
