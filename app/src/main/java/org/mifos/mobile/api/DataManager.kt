@@ -46,7 +46,7 @@ import javax.inject.Singleton
 @Singleton
 class DataManager @Inject constructor(val preferencesHelper: PreferencesHelper, private val baseApiManager: BaseApiManager,
                                       private val databaseHelper: DatabaseHelper) {
-    var clientId: Long
+    var clientId: Long = preferencesHelper.clientId
     fun login(loginPayload: LoginPayload?): Observable<User?>? {
         return baseApiManager.authenticationApi.authenticate(loginPayload)
     }
@@ -244,7 +244,4 @@ class DataManager @Inject constructor(val preferencesHelper: PreferencesHelper, 
                 })
     }
 
-    init {
-        clientId = preferencesHelper.clientId
-    }
 }
