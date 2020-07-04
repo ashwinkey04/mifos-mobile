@@ -3,8 +3,10 @@ package org.mifos.mobile.api
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.functions.Function
+
 import okhttp3.MediaType
 import okhttp3.ResponseBody
+
 import org.mifos.mobile.FakeRemoteDataSource
 import org.mifos.mobile.api.local.DatabaseHelper
 import org.mifos.mobile.api.local.PreferencesHelper
@@ -36,6 +38,7 @@ import org.mifos.mobile.models.templates.account.AccountOptionsTemplate
 import org.mifos.mobile.models.templates.beneficiary.BeneficiaryTemplate
 import org.mifos.mobile.models.templates.loans.LoanTemplate
 import org.mifos.mobile.models.templates.savings.SavingsAccountTemplate
+
 import javax.inject.Inject
 import javax.inject.Singleton
 

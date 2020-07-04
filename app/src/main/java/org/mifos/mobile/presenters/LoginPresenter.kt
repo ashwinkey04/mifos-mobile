@@ -1,12 +1,13 @@
 package org.mifos.mobile.presenters
 
-import android.annotation.SuppressLint
 import android.content.Context
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+
 import org.mifos.mobile.R
 import org.mifos.mobile.api.BaseApiManager
 import org.mifos.mobile.api.DataManager
@@ -20,7 +21,9 @@ import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.MFErrorParser
+
 import retrofit2.HttpException
+
 import javax.inject.Inject
 
 /**
@@ -28,6 +31,7 @@ import javax.inject.Inject
  * @since 05/06/16
  */
 class LoginPresenter @Inject constructor(private val dataManager: DataManager, @ApplicationContext context: Context?) : BasePresenter<LoginView?>(context) {
+
     private val preferencesHelper: PreferencesHelper = dataManager.preferencesHelper
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     override fun attachView(mvpView: LoginView?) {
@@ -129,10 +133,9 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
         )
     }
 
-    @SuppressLint("StringFormatInvalid", "StringFormatMatches")
     private fun isCredentialsValid(loginPayload: LoginPayload?): Boolean {
-        val username:String = loginPayload?.username.toString()
-        val password:String = loginPayload?.password.toString()
+        val username: String = loginPayload?.username.toString()
+        val password: String = loginPayload?.password.toString()
         var credentialValid = true
         val resources = context.resources
         val correctUsername = username.replaceFirst("\\s++$".toRegex(), "").trim { it <= ' ' }
@@ -143,8 +146,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                 credentialValid = false
             }
             username.length < 5 -> {
-                mvpView!!.showUsernameError(context.getString(R.string.error_validation_minimum_chars
-                        , resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
+                mvpView!!.showUsernameError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
                 credentialValid = false
             }
             correctUsername.contains(" ") -> {
@@ -163,8 +165,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                     context.getString(R.string.password)))
             credentialValid = false
         } else if (password.length < 6) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars
-                    , resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
             credentialValid = false
         } else {
             mvpView!!.clearPasswordError()

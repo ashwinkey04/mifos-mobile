@@ -4,7 +4,9 @@ apply plugin: 'com.google.gms.oss.licenses.plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
 apply from: '../config/quality/quality.gradle'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -94,7 +96,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
     //Square dependencies
-    implementation('com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion') {
+    implementation("com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion") {
         // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
         exclude module: 'okhttp'
     }
@@ -118,8 +120,9 @@ dependencies {
     implementation('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true
     }
+
     //Annotation library
-    implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.annotation:annotation:$rootProject.annotationLibraryVersion"
 
     //qr code
     implementation "com.google.zxing:core:$rootProject.zxingcoreVersion"

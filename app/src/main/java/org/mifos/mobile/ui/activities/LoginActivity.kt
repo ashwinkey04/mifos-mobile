@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
+
 import androidx.appcompat.widget.AppCompatButton
+
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+
 import com.google.android.material.textfield.TextInputLayout
+
 import org.mifos.mobile.R
 import org.mifos.mobile.models.payload.LoginPayload
 import org.mifos.mobile.presenters.LoginPresenter
@@ -19,6 +23,7 @@ import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.Toaster
+
 import javax.inject.Inject
 
 /**
@@ -46,6 +51,7 @@ class LoginActivity : BaseActivity(), LoginView {
     @BindView(R.id.ll_login)
     var llLogin: LinearLayout? = null
     private var userName: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityComponent.inject(this)
