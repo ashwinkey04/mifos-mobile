@@ -75,16 +75,12 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                         }
 
                         override fun onNext(user: User) {
-                            if (user != null) {
-                                val userName = user.username
-                                val userID = user.userId
-                                val authToken = Constants.BASIC +
-                                        user.base64EncodedAuthenticationKey
-                                saveAuthenticationTokenForSession(userName, userID, authToken)
-                                mvpView!!.onLoginSuccess(userName)
-                            } else {
-                                mvpView!!.hideProgress()
-                            }
+                            val userName = user.username
+                            val userID = user.userId
+                            val authToken = Constants.BASIC +
+                                    user.base64EncodedAuthenticationKey
+                            saveAuthenticationTokenForSession(userName, userID, authToken)
+                            mvpView!!.onLoginSuccess(userName)
                         }
                     })
             )
@@ -115,7 +111,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                     override fun onNext(clientPage: Page<Client>) {
                         mvpView!!.hideProgress()
                         if (clientPage.pageItems.isNotEmpty()) {
-                            val clientId = clientPage.pageItems[0]!!.id.toLong()
+                            val clientId = clientPage.pageItems[0].id.toLong()
                             preferencesHelper.clientId = clientId
                             dataManager.clientId = clientId
                             reInitializeService()
@@ -129,7 +125,6 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
         )
     }
 
-    @SuppressLint("StringFormatInvalid", "StringFormatMatches")
     private fun isCredentialsValid(loginPayload: LoginPayload?): Boolean {
         val username:String = loginPayload?.username.toString()
         val password:String = loginPayload?.password.toString()
@@ -158,16 +153,19 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                 mvpView!!.clearUsernameError()
             }
         }
-        if (password == null || password.isEmpty()) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
-                    context.getString(R.string.password)))
-            credentialValid = false
-        } else if (password.length < 6) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars
-                    , resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
-            credentialValid = false
-        } else {
-            mvpView!!.clearPasswordError()
+        when {
+            password.isEmpty() -> {
+                mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
+                        context.getString(R.string.password)))
+                credentialValid = false
+            }
+            password.length < 6 -> {
+                mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+                credentialValid = false
+            }
+            else -> {
+                mvpView!!.clearPasswordError()
+            }
         }
         return credentialValid
     }
