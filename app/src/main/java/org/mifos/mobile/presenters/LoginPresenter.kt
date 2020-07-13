@@ -2,11 +2,13 @@ package org.mifos.mobile.presenters
 
 import android.annotation.SuppressLint
 import android.content.Context
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+
 import org.mifos.mobile.R
 import org.mifos.mobile.api.BaseApiManager
 import org.mifos.mobile.api.DataManager
@@ -20,6 +22,7 @@ import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.MFErrorParser
+
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -28,6 +31,7 @@ import javax.inject.Inject
  * @since 05/06/16
  */
 class LoginPresenter @Inject constructor(private val dataManager: DataManager, @ApplicationContext context: Context?) : BasePresenter<LoginView?>(context) {
+
     private val preferencesHelper: PreferencesHelper = dataManager.preferencesHelper
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     override fun attachView(mvpView: LoginView?) {
@@ -158,16 +162,19 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                 mvpView!!.clearUsernameError()
             }
         }
-        if (password == null || password.isEmpty()) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
-                    context.getString(R.string.password)))
-            credentialValid = false
-        } else if (password.length < 6) {
-            mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars
-                    , resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
-            credentialValid = false
-        } else {
-            mvpView!!.clearPasswordError()
+        when {
+            password.isEmpty() -> {
+                mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
+                        context.getString(R.string.password)))
+                credentialValid = false
+            }
+            password.length < 6 -> {
+                mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+                credentialValid = false
+            }
+            else -> {
+                mvpView!!.clearPasswordError()
+            }
         }
         return credentialValid
     }
