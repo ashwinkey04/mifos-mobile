@@ -56,7 +56,7 @@ class HomePresenter @Inject constructor(private val dataManager: DataManager, @A
                     ?.subscribeWith(object : DisposableObserver<Client?>() {
                         override fun onComplete() {}
                         override fun onError(e: Throwable) {
-                            mvpView?.showError(context.getString(R.string.error_fetching_client))
+                            mvpView?.showError(context?.getString(R.string.error_fetching_client))
                             mvpView?.hideProgress()
                         }
 

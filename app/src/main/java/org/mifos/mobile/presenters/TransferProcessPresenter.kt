@@ -84,7 +84,7 @@ class TransferProcessPresenter @Inject constructor(
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
-                        mvpView?.showError(context.getString(R.string.transfer_error))
+                        mvpView?.showError(context?.getString(R.string.transfer_error))
                     }
 
                     override fun onNext(responseBody: ResponseBody) {

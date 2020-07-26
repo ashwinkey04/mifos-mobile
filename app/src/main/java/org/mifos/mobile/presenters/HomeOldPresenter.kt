@@ -60,7 +60,7 @@ class HomeOldPresenter @Inject constructor(
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
-                        mvpView?.showError(context.getString(R.string.error_fetching_accounts))
+                        mvpView?.showError(context?.getString(R.string.error_fetching_accounts))
                     }
 
                     override fun onNext(clientAccounts: ClientAccounts) {
@@ -90,18 +90,13 @@ class HomeOldPresenter @Inject constructor(
                     ?.subscribeWith(object : DisposableObserver<Client?>() {
                         override fun onComplete() {}
                         override fun onError(e: Throwable) {
-                            mvpView?.showError(context.getString(R.string.error_fetching_client))
+                            mvpView?.showError(context?.getString(R.string.error_fetching_client))
                             mvpView?.hideProgress()
                         }
 
                         override fun onNext(client: Client) {
-                            if (client != null) {
-                                preferencesHelper.officeName = client.officeName
-                                mvpView?.showUserDetails(client)
-                            } else {
-                                mvpView?.showError(context
-                                        .getString(R.string.error_client_not_found))
-                            }
+                            preferencesHelper.officeName = client.officeName
+                            mvpView?.showUserDetails(client)
                         }
                     })?.let {
                         compositeDisposable.add(it

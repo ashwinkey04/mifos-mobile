@@ -4,11 +4,14 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.util.Base64
 import android.util.Log
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+
 import okhttp3.ResponseBody
+
 import org.mifos.mobile.R
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.api.local.PreferencesHelper
@@ -19,8 +22,11 @@ import org.mifos.mobile.models.notification.NotificationUserDetail
 import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.UserDetailsView
 import org.mifos.mobile.utils.ImageUtil.Companion.instance
+
 import retrofit2.HttpException
+
 import java.io.IOException
+
 import javax.inject.Inject
 
 /**
@@ -57,7 +63,7 @@ class UserDetailsPresenter @Inject constructor(
                         override fun onComplete() {}
                         override fun onError(e: Throwable) {
                             mvpView?.hideProgress()
-                            mvpView?.showError(context.getString(R.string.error_fetching_client))
+                            mvpView?.showError(context?.getString(R.string.error_fetching_client))
                         }
 
                         override fun onNext(client: Client) {

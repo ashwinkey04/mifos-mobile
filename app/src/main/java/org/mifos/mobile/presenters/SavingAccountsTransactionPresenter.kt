@@ -1,12 +1,14 @@
 package org.mifos.mobile.presenters
 
 import android.content.Context
+
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Predicate
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+
 import org.mifos.mobile.R
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.injection.ApplicationContext
@@ -17,6 +19,7 @@ import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.SavingAccountsTransactionView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.DateHelper.getDateAsLongFromList
+
 import javax.inject.Inject
 
 
@@ -68,7 +71,7 @@ class SavingAccountsTransactionPresenter @Inject constructor(
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
                         mvpView?.showErrorFetchingSavingAccountsDetail(
-                                context.getString(R.string.saving_account_details))
+                                context?.getString(R.string.saving_account_details))
                     }
 
                     override fun onNext(savingAccount: SavingsWithAssociations) {
@@ -115,34 +118,44 @@ class SavingAccountsTransactionPresenter @Inject constructor(
     ): Collection<Transactions?>? {
         return Observable.fromIterable(savingAccountsTransactionList)
                 .filter(Predicate { (_, transactionType) ->
-                    if (status?.status?.compareTo(context.getString(R.string.deposit)) == 0
+                    if (context?.getString(R.string.deposit)?.let { status?.status?.compareTo(it) } == 0
                             && transactionType?.deposit!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(
-                                    context.getString(R.string.dividend_payout)) == 0 &&
+                    } else if (context?.getString(R.string.dividend_payout)?.let {
+                                status?.status?.compareTo(
+                                        it)
+                            } == 0 &&
                             transactionType?.dividendPayout!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(
-                                    context.getString(R.string.withdrawal)) == 0 &&
+                    } else if (context?.getString(R.string.withdrawal)?.let {
+                                status?.status?.compareTo(
+                                        it)
+                            } == 0 &&
                             transactionType?.withdrawal!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(
-                                    context.getString(R.string.interest_posting)) == 0 &&
+                    } else if (context?.getString(R.string.interest_posting)?.let {
+                                status?.status?.compareTo(
+                                        it)
+                            } == 0 &&
                             transactionType?.interestPosting!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(
-                                    context.getString(R.string.fee_deduction)) == 0 &&
+                    } else if (context?.getString(R.string.fee_deduction)?.let {
+                                status?.status?.compareTo(
+                                        it)
+                            } == 0 &&
                             transactionType?.feeDeduction!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(
-                                    context.getString(R.string.withdrawal_transfer)) == 0 &&
+                    } else if (context?.getString(R.string.withdrawal_transfer)?.let {
+                                status?.status?.compareTo(
+                                        it)
+                            } == 0 &&
                             transactionType?.approveTransfer!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(context.getString(
-                                    R.string.rejected_transfer)) == 0 && transactionType?.rejectTransfer!!) {
+                    } else if (context?.getString(
+                                    R.string.rejected_transfer)?.let { status?.status?.compareTo(it) } == 0 && transactionType?.rejectTransfer!!) {
                         return@Predicate true
-                    } else if (status?.status?.compareTo(context.getString(
-                                    R.string.overdraft_fee)) == 0 &&
+                    } else if (context?.getString(
+                                    R.string.overdraft_fee)?.let { status?.status?.compareTo(it) } == 0 &&
                             transactionType?.overdraftFee!!) {
                         return@Predicate true
                     }

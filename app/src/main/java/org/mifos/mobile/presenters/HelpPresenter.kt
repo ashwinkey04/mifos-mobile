@@ -26,12 +26,13 @@ class HelpPresenter @Inject constructor(@ApplicationContext context: Context) :
     }
 
     fun loadFaq() {
-        val qs = context.resources.getStringArray(R.array.faq_qs)
-        val ans = context.resources.getStringArray(R.array.faq_ans)
+        val qs = context?.resources?.getStringArray(R.array.faq_qs)
+        val ans = context?.resources?.getStringArray(R.array.faq_ans)
         val faqArrayList = ArrayList<FAQ?>()
-        for (i in qs.indices) {
-            faqArrayList.add(FAQ(qs[i], ans[i]))
-        }
+        if (qs != null)
+            for (i in qs.indices) {
+                faqArrayList.add(FAQ(qs[i], ans?.get(i)))
+            }
         mvpView?.showFaq(faqArrayList)
     }
 

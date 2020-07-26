@@ -42,7 +42,7 @@ class BeneficiaryListPresenter @Inject constructor(private val dataManager: Data
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
                         mvpView?.showError(context
-                                .getString(R.string.beneficiaries))
+                                ?.getString(R.string.beneficiaries))
                     }
 
                     override fun onNext(beneficiaries: List<Beneficiary?>) {

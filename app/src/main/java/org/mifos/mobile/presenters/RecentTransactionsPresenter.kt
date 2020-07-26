@@ -72,7 +72,7 @@ class RecentTransactionsPresenter @Inject constructor(
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
                         mvpView?.showErrorFetchingRecentTransactions(
-                                context.getString(R.string.recent_transactions))
+                                context?.getString(R.string.recent_transactions))
                     }
 
                     override fun onNext(transactions: Page<Transaction?>) {
@@ -86,7 +86,7 @@ class RecentTransactionsPresenter @Inject constructor(
                             mvpView?.showRecentTransactions(transactions.pageItems)
                         } else {
                             mvpView?.showMessage(
-                                    context.getString(R.string.no_more_transactions_available))
+                                    context?.getString(R.string.no_more_transactions_available))
                         }
                     }
                 })?.let {

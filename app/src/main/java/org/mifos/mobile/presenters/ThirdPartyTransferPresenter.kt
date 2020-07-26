@@ -61,7 +61,7 @@ class ThirdPartyTransferPresenter @Inject constructor(
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
-                        mvpView?.showError(context.getString(
+                        mvpView?.showError(context?.getString(
                                 R.string.error_fetching_third_party_transfer_template))
                     }
 
@@ -82,7 +82,7 @@ class ThirdPartyTransferPresenter @Inject constructor(
     fun getAccountNumbersFromAccountOptions(accountOptions: List<AccountOption>?): List<AccountDetail> {
         val accountNumber: MutableList<AccountDetail> = ArrayList()
         Observable.fromIterable(accountOptions)
-                .filter { (_, _, accountType) -> accountType?.code != context.getString(R.string.account_type_loan) }
+                .filter { (_, _, accountType) -> accountType?.code != context?.getString(R.string.account_type_loan) }
                 .flatMap { (_, accountNo, accountType) ->
                     Observable.just(AccountDetail(accountNo!!,
                             accountType?.value!!))

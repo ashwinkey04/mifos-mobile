@@ -71,7 +71,7 @@ class QrCodeImportPresenter @Inject constructor(@ApplicationContext context: Con
                         mvpView?.hideProgress()
                         hasErrorOccured = true
                         mvpView?.showErrorReadingQr(context
-                                .getString(R.string.error_reading_qr))
+                                ?.getString(R.string.error_reading_qr))
                     }
                     Single.just(result)
                 }
@@ -85,7 +85,7 @@ class QrCodeImportPresenter @Inject constructor(@ApplicationContext context: Con
                     if (!hasErrorOccured) {
                         mvpView
                                 ?.showErrorReadingQr(
-                                        context.getString(R.string.error_reading_qr))
+                                        context?.getString(R.string.error_reading_qr))
                     }
                     hasErrorOccured = false
                 }?.let { compositeDisposable.add(it) }

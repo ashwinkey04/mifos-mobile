@@ -51,7 +51,7 @@ class AccountOverviewPresenter @Inject constructor(
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
                         mvpView?.hideProgress()
-                        mvpView?.showError(context.getString(R.string.error_fetching_accounts))
+                        mvpView?.showError(context?.getString(R.string.error_fetching_accounts))
                     }
 
                     override fun onNext(clientAccounts: ClientAccounts) {
