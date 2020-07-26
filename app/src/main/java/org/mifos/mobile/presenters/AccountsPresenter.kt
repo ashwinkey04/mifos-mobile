@@ -27,7 +27,7 @@ import javax.inject.Inject
 /**
  * Created by Rajan Maurya on 23/10/16.
  */
-class AccountsPresenter @Inject constructor(@ApplicationContext context: Context?, private val dataManager: DataManager) :
+class AccountsPresenter @Inject constructor(@ApplicationContext context: Context, private val dataManager: DataManager) :
         BasePresenter<AccountsView?>(context) {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()

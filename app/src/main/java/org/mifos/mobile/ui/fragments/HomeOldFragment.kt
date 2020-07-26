@@ -126,7 +126,7 @@ class HomeOldFragment : BaseFragment(), HomeOldView, OnRefreshListener {
         val menuItem = menu.findItem(R.id.menu_notifications)
         val count = menuItem.actionView
         tvNotificationCount = count.findViewById(R.id.tv_notification_indicator)
-        presenter?.getUnreadNotificationsCount()
+        presenter?.unreadNotificationsCount
         count.setOnClickListener { startActivity(Intent(context, NotificationActivity::class.java)) }
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -174,8 +174,8 @@ class HomeOldFragment : BaseFragment(), HomeOldView, OnRefreshListener {
 
     private fun loadClientData() {
         presenter?.loadClientAccountDetails()
-        presenter?.getUserDetails()
-        presenter?.getUserImage()
+        presenter?.userDetails
+        presenter?.userImage
     }
 
     override fun showUserInterface() {

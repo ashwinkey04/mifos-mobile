@@ -1,29 +1,25 @@
 package org.mifos.mobile.presenters
 
 import android.content.Context
-
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
-
 import org.mifos.mobile.R
 import org.mifos.mobile.api.BaseApiManager
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.api.local.PreferencesHelper
-import org.mifos.mobile.models.payload.LoginPayload
 import org.mifos.mobile.injection.ApplicationContext
 import org.mifos.mobile.models.Page
 import org.mifos.mobile.models.User
 import org.mifos.mobile.models.client.Client
+import org.mifos.mobile.models.payload.LoginPayload
 import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.MFErrorParser
-
 import retrofit2.HttpException
-
 import javax.inject.Inject
 
 /**
@@ -54,19 +50,19 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
     fun login(loginPayload: LoginPayload?) {
         checkViewAttached()
         if (isCredentialsValid(loginPayload)) {
-            mvpView!!.showProgress()
+            mvpView?.showProgress()
             compositeDisposable.add(dataManager.login(loginPayload)
                     ?.observeOn(AndroidSchedulers.mainThread())
                     ?.subscribeOn(Schedulers.io())!!
                     .subscribeWith(object : DisposableObserver<User?>() {
                         override fun onComplete() {}
                         override fun onError(e: Throwable) {
-                            mvpView!!.hideProgress()
+                            mvpView?.hideProgress()
                             val errorMessage: String
                             try {
                                 if (e is HttpException) {
                                     if (e.code() == 503) {
-                                        mvpView!!.showMessage(context.getString(R.string.error_server_down))
+                                        mvpView?.showMessage(context.getString(R.string.error_server_down))
                                     } else {
                                         errorMessage = e.response().errorBody().string()
                                         mvpView!!
@@ -85,7 +81,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                             val authToken = Constants.BASIC +
                                     user.base64EncodedAuthenticationKey
                             saveAuthenticationTokenForSession(userName, userID, authToken)
-                            mvpView!!.onLoginSuccess(userName)
+                            mvpView?.onLoginSuccess(userName)
                         }
                     })
             )
@@ -103,18 +99,18 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
                 ?.subscribeWith(object : DisposableObserver<Page<Client?>?>() {
                     override fun onComplete() {}
                     override fun onError(e: Throwable) {
-                        mvpView!!.hideProgress()
+                        mvpView?.hideProgress()
                         if ((e as HttpException).code() == 401) {
-                            mvpView!!.showMessage(context.getString(R.string.unauthorized_client))
+                            mvpView?.showMessage(context.getString(R.string.unauthorized_client))
                         } else {
-                            mvpView!!.showMessage(context.getString(R.string.error_fetching_client))
+                            mvpView?.showMessage(context.getString(R.string.error_fetching_client))
                         }
                         preferencesHelper.clear()
                         reInitializeService()
                     }
 
                     override fun onNext(clientPage: Page<Client?>) {
-                        mvpView!!.hideProgress()
+                        mvpView?.hideProgress()
                         if (clientPage.pageItems.isNotEmpty()) {
                             val clientId = clientPage.pageItems[0]?.id?.toLong()
                             preferencesHelper.clientId = clientId
@@ -140,37 +136,37 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager, @
         val correctUsername = username.replaceFirst("\\s++$".toRegex(), "").trim { it <= ' ' }
         when {
             username.isEmpty() -> {
-                mvpView!!.showUsernameError(context.getString(R.string.error_validation_blank,
+                mvpView?.showUsernameError(context.getString(R.string.error_validation_blank,
                         context.getString(R.string.username)))
                 credentialValid = false
             }
             username.length < 5 -> {
-                mvpView!!.showUsernameError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
+                mvpView?.showUsernameError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.username), resources.getInteger(R.integer.username_minimum_length)))
                 credentialValid = false
             }
             correctUsername.contains(" ") -> {
-                mvpView!!.showUsernameError(context.getString(
+                mvpView?.showUsernameError(context.getString(
                         R.string.error_validation_cannot_contain_spaces,
                         resources.getString(R.string.username),
                         context.getString(R.string.not_contain_username)))
                 credentialValid = false
             }
             else -> {
-                mvpView!!.clearUsernameError()
+                mvpView?.clearUsernameError()
             }
         }
         when {
             password.isEmpty() -> {
-                mvpView!!.showPasswordError(context.getString(R.string.error_validation_blank,
+                mvpView?.showPasswordError(context.getString(R.string.error_validation_blank,
                         context.getString(R.string.password)))
                 credentialValid = false
             }
             password.length < 6 -> {
-                mvpView!!.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+                mvpView?.showPasswordError(context.getString(R.string.error_validation_minimum_chars, resources.getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
                 credentialValid = false
             }
             else -> {
-                mvpView!!.clearPasswordError()
+                mvpView?.clearPasswordError()
             }
         }
         return credentialValid

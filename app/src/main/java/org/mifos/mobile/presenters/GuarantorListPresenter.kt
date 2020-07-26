@@ -1,32 +1,28 @@
 package org.mifos.mobile.presenters
 
 import android.content.Context
-import android.util.Log
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
-
-import okhttp3.ResponseBody
-
 import org.mifos.mobile.api.DataManager
-import org.mifos.mobile.injection.ApplicationContext
-import org.mifos.mobile.presenters.base.BasePresenter
-import org.mifos.mobile.ui.views.GuarantorDetailView
 
-import java.io.IOException
+import org.mifos.mobile.injection.ApplicationContext
+import org.mifos.mobile.models.guarantor.GuarantorPayload
+import org.mifos.mobile.presenters.base.BasePresenter
+import org.mifos.mobile.ui.views.GuarantorListView
+
 import javax.inject.Inject
 
 /*
-* Created by saksham on 25/July/2018
+* Created by saksham on 24/July/2018
 */
-class GuarantorDetailPresenter @Inject constructor(
-        @ApplicationContext context: Context,
-        var dataManager: DataManager
-) : BasePresenter<GuarantorDetailView?>(context) {
+class GuarantorListPresenter @Inject constructor(@ApplicationContext context: Context, var dataManager: DataManager) :
+        BasePresenter<GuarantorListView?>(context) {
+
     var compositeDisposable: CompositeDisposable = CompositeDisposable()
-    override fun attachView(mvpView: GuarantorDetailView?) {
+    override fun attachView(mvpView: GuarantorListView?) {
         super.attachView(mvpView)
     }
 
@@ -35,19 +31,15 @@ class GuarantorDetailPresenter @Inject constructor(
         compositeDisposable.clear()
     }
 
-    fun deleteGuarantor(loanId: Long?, guarantorId: Long?) {
+    fun getGuarantorList(loanId: Long) {
         mvpView?.showProgress()
-        dataManager.deleteGuarantor(loanId, guarantorId)
+        dataManager.getGuarantorList(loanId)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribeWith(object : DisposableObserver<ResponseBody?>() {
-                    override fun onNext(responseBody: ResponseBody) {
+                ?.subscribeWith(object : DisposableObserver<List<GuarantorPayload?>?>() {
+                    override fun onNext(payload: List<GuarantorPayload?>) {
                         mvpView?.hideProgress()
-                        try {
-                            mvpView?.guarantorDeletedSuccessfully(responseBody.string())
-                        } catch (e: IOException) {
-                            Log.d(TAG, e.message)
-                        }
+                        mvpView?.showGuarantorListSuccessfully(payload)
                     }
 
                     override fun onError(e: Throwable) {
@@ -57,10 +49,6 @@ class GuarantorDetailPresenter @Inject constructor(
 
                     override fun onComplete() {}
                 })?.let { compositeDisposable.add(it) }
-    }
-
-    companion object {
-        val TAG: String? = GuarantorDetailPresenter::class.java.simpleName
     }
 
 }

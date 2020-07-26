@@ -1,7 +1,6 @@
 package org.mifos.mobile.presenters
 
 import android.content.Context
-import android.util.Log
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -12,21 +11,22 @@ import okhttp3.ResponseBody
 
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.injection.ApplicationContext
+import org.mifos.mobile.models.accounts.savings.SavingsAccountWithdrawPayload
 import org.mifos.mobile.presenters.base.BasePresenter
-import org.mifos.mobile.ui.views.GuarantorDetailView
+import org.mifos.mobile.ui.views.SavingsAccountWithdrawView
 
-import java.io.IOException
 import javax.inject.Inject
 
 /*
-* Created by saksham on 25/July/2018
+* Created by saksham on 02/July/2018
 */
-class GuarantorDetailPresenter @Inject constructor(
-        @ApplicationContext context: Context,
-        var dataManager: DataManager
-) : BasePresenter<GuarantorDetailView?>(context) {
-    var compositeDisposable: CompositeDisposable = CompositeDisposable()
-    override fun attachView(mvpView: GuarantorDetailView?) {
+class SavingsAccountWithdrawPresenter @Inject constructor(
+        private val dataManager: DataManager,
+        @ApplicationContext context: Context
+) : BasePresenter<SavingsAccountWithdrawView?>(context) {
+
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    override fun attachView(mvpView: SavingsAccountWithdrawView?) {
         super.attachView(mvpView)
     }
 
@@ -35,19 +35,19 @@ class GuarantorDetailPresenter @Inject constructor(
         compositeDisposable.clear()
     }
 
-    fun deleteGuarantor(loanId: Long?, guarantorId: Long?) {
+    fun submitWithdrawSavingsAccount(
+            accountId: String?,
+            payload: SavingsAccountWithdrawPayload?
+    ) {
+        checkViewAttached()
         mvpView?.showProgress()
-        dataManager.deleteGuarantor(loanId, guarantorId)
-                ?.subscribeOn(Schedulers.io())
+        dataManager.submitWithdrawSavingsAccount(accountId, payload)
+                ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribeWith(object : DisposableObserver<ResponseBody?>() {
-                    override fun onNext(responseBody: ResponseBody) {
+                    override fun onNext(responseBodyObservable: ResponseBody) {
                         mvpView?.hideProgress()
-                        try {
-                            mvpView?.guarantorDeletedSuccessfully(responseBody.string())
-                        } catch (e: IOException) {
-                            Log.d(TAG, e.message)
-                        }
+                        mvpView?.showSavingsAccountWithdrawSuccessfully()
                     }
 
                     override fun onError(e: Throwable) {
@@ -57,10 +57,6 @@ class GuarantorDetailPresenter @Inject constructor(
 
                     override fun onComplete() {}
                 })?.let { compositeDisposable.add(it) }
-    }
-
-    companion object {
-        val TAG: String? = GuarantorDetailPresenter::class.java.simpleName
     }
 
 }
