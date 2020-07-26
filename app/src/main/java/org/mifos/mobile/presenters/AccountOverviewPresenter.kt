@@ -73,11 +73,12 @@ class AccountOverviewPresenter @Inject constructor(
      * @return Returns `totalAmount` which is calculated by adding all [LoanAccount]
      * balance.
      */
-    fun getLoanAccountDetails(loanAccountList: List<LoanAccount>): Double {
+    fun getLoanAccountDetails(loanAccountList: List<LoanAccount>?): Double {
         var totalAmount = 0.0
-        for ((_, _, _, _, _, _, _, _, _, _, _, _, _, _, loanBalance) in loanAccountList) {
-            totalAmount += loanBalance
-        }
+        if (loanAccountList != null)
+            for ((_, _, _, _, _, _, _, _, _, _, _, _, _, _, loanBalance) in loanAccountList) {
+                totalAmount += loanBalance
+            }
         return totalAmount
     }
 
