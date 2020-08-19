@@ -27,6 +27,7 @@ import com.google.android.material.navigation.NavigationView
 
 import org.mifos.mobile.R
 import org.mifos.mobile.api.local.PreferencesHelper
+import org.mifos.mobile.createApplicationScreenMessage
 import org.mifos.mobile.models.client.Client
 import org.mifos.mobile.presenters.UserDetailsPresenter
 import org.mifos.mobile.ui.activities.base.BaseActivity
