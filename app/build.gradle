@@ -158,5 +158,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "androidx.test:rules:$rootProject.rulesVersion"
+
+    implementation project(':SharedCode')
 }
 apply plugin: 'com.google.gms.google-services'

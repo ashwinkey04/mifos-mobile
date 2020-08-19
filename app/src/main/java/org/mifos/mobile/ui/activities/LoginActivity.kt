@@ -23,6 +23,8 @@ import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.Toaster
 
+import org.mifos.mobile.createApplicationScreenMessage
+
 import javax.inject.Inject
 
 /**
@@ -58,6 +60,10 @@ class LoginActivity : BaseActivity(), LoginView {
         setContentView(R.layout.activity_login)
         ButterKnife.bind(this)
         loginPresenter?.attachView(this)
+
+        // Kotlin multiplatform demonstration
+        showToast(createApplicationScreenMessage())
+
     }
 
     /**

@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF4357A424ED59640056A743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4357A324ED59640056A743 /* AppDelegate.swift */; };
+		CF4357A624ED59640056A743 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4357A524ED59640056A743 /* SceneDelegate.swift */; };
+		CF4357A824ED59640056A743 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4357A724ED59640056A743 /* ViewController.swift */; };
+		CF4357AB24ED59640056A743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4357A924ED59640056A743 /* Main.storyboard */; };
+		CF4357AD24ED59660056A743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF4357AC24ED59660056A743 /* Assets.xcassets */; };
+		CF4357B024ED59660056A743 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4357AE24ED59660056A743 /* LaunchScreen.storyboard */; };
+		CF4357BB24ED59660056A743 /* mifos_mobile_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4357BA24ED59660056A743 /* mifos_mobile_iosTests.swift */; };
+		CF4357C624ED59670056A743 /* mifos_mobile_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4357C524ED59670056A743 /* mifos_mobile_iosUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF4357B724ED59660056A743 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF43579824ED59640056A743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF43579F24ED59640056A743;
+			remoteInfo = "mifos-mobile-ios";
+		};
+		CF4357C224ED59660056A743 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF43579824ED59640056A743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF43579F24ED59640056A743;
+			remoteInfo = "mifos-mobile-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF4357A024ED59640056A743 /* mifos-mobile-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mifos-mobile-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF4357A324ED59640056A743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF4357A524ED59640056A743 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CF4357A724ED59640056A743 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF4357AA24ED59640056A743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF4357AC24ED59660056A743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF4357AF24ED59660056A743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF4357B124ED59660056A743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF4357B624ED59660056A743 /* mifos-mobile-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mifos-mobile-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF4357BA24ED59660056A743 /* mifos_mobile_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mifos_mobile_iosTests.swift; sourceTree = "<group>"; };
+		CF4357BC24ED59660056A743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF4357C124ED59660056A743 /* mifos-mobile-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mifos-mobile-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF4357C524ED59670056A743 /* mifos_mobile_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mifos_mobile_iosUITests.swift; sourceTree = "<group>"; };
+		CF4357C724ED59670056A743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF43579D24ED59640056A743 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357B324ED59660056A743 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357BE24ED59660056A743 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF43579724ED59640056A743 = {
+			isa = PBXGroup;
+			children = (
+				CF4357A224ED59640056A743 /* mifos-mobile-ios */,
+				CF4357B924ED59660056A743 /* mifos-mobile-iosTests */,
+				CF4357C424ED59670056A743 /* mifos-mobile-iosUITests */,
+				CF4357A124ED59640056A743 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF4357A124ED59640056A743 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF4357A024ED59640056A743 /* mifos-mobile-ios.app */,
+				CF4357B624ED59660056A743 /* mifos-mobile-iosTests.xctest */,
+				CF4357C124ED59660056A743 /* mifos-mobile-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF4357A224ED59640056A743 /* mifos-mobile-ios */ = {
+			isa = PBXGroup;
+			children = (
+				CF4357A324ED59640056A743 /* AppDelegate.swift */,
+				CF4357A524ED59640056A743 /* SceneDelegate.swift */,
+				CF4357A724ED59640056A743 /* ViewController.swift */,
+				CF4357A924ED59640056A743 /* Main.storyboard */,
+				CF4357AC24ED59660056A743 /* Assets.xcassets */,
+				CF4357AE24ED59660056A743 /* LaunchScreen.storyboard */,
+				CF4357B124ED59660056A743 /* Info.plist */,
+			);
+			path = "mifos-mobile-ios";
+			sourceTree = "<group>";
+		};
+		CF4357B924ED59660056A743 /* mifos-mobile-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF4357BA24ED59660056A743 /* mifos_mobile_iosTests.swift */,
+				CF4357BC24ED59660056A743 /* Info.plist */,
+			);
+			path = "mifos-mobile-iosTests";
+			sourceTree = "<group>";
+		};
+		CF4357C424ED59670056A743 /* mifos-mobile-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CF4357C524ED59670056A743 /* mifos_mobile_iosUITests.swift */,
+				CF4357C724ED59670056A743 /* Info.plist */,
+			);
+			path = "mifos-mobile-iosUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF43579F24ED59640056A743 /* mifos-mobile-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF4357CA24ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-ios" */;
+			buildPhases = (
+				CF43579C24ED59640056A743 /* Sources */,
+				CF43579D24ED59640056A743 /* Frameworks */,
+				CF43579E24ED59640056A743 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mifos-mobile-ios";
+			productName = "mifos-mobile-ios";
+			productReference = CF4357A024ED59640056A743 /* mifos-mobile-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF4357B524ED59660056A743 /* mifos-mobile-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF4357CD24ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-iosTests" */;
+			buildPhases = (
+				CF4357B224ED59660056A743 /* Sources */,
+				CF4357B324ED59660056A743 /* Frameworks */,
+				CF4357B424ED59660056A743 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF4357B824ED59660056A743 /* PBXTargetDependency */,
+			);
+			name = "mifos-mobile-iosTests";
+			productName = "mifos-mobile-iosTests";
+			productReference = CF4357B624ED59660056A743 /* mifos-mobile-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CF4357C024ED59660056A743 /* mifos-mobile-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF4357D024ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-iosUITests" */;
+			buildPhases = (
+				CF4357BD24ED59660056A743 /* Sources */,
+				CF4357BE24ED59660056A743 /* Frameworks */,
+				CF4357BF24ED59660056A743 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF4357C324ED59660056A743 /* PBXTargetDependency */,
+			);
+			name = "mifos-mobile-iosUITests";
+			productName = "mifos-mobile-iosUITests";
+			productReference = CF4357C124ED59660056A743 /* mifos-mobile-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF43579824ED59640056A743 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Mifos Initiative";
+				TargetAttributes = {
+					CF43579F24ED59640056A743 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					CF4357B524ED59660056A743 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = CF43579F24ED59640056A743;
+					};
+					CF4357C024ED59660056A743 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = CF43579F24ED59640056A743;
+					};
+				};
+			};
+			buildConfigurationList = CF43579B24ED59640056A743 /* Build configuration list for PBXProject "mifos-mobile-ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF43579724ED59640056A743;
+			productRefGroup = CF4357A124ED59640056A743 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF43579F24ED59640056A743 /* mifos-mobile-ios */,
+				CF4357B524ED59660056A743 /* mifos-mobile-iosTests */,
+				CF4357C024ED59660056A743 /* mifos-mobile-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF43579E24ED59640056A743 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4357B024ED59660056A743 /* LaunchScreen.storyboard in Resources */,
+				CF4357AD24ED59660056A743 /* Assets.xcassets in Resources */,
+				CF4357AB24ED59640056A743 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357B424ED59660056A743 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357BF24ED59660056A743 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF43579C24ED59640056A743 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4357A824ED59640056A743 /* ViewController.swift in Sources */,
+				CF4357A424ED59640056A743 /* AppDelegate.swift in Sources */,
+				CF4357A624ED59640056A743 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357B224ED59660056A743 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4357BB24ED59660056A743 /* mifos_mobile_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF4357BD24ED59660056A743 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4357C624ED59670056A743 /* mifos_mobile_iosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF4357B824ED59660056A743 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF43579F24ED59640056A743 /* mifos-mobile-ios */;
+			targetProxy = CF4357B724ED59660056A743 /* PBXContainerItemProxy */;
+		};
+		CF4357C324ED59660056A743 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF43579F24ED59640056A743 /* mifos-mobile-ios */;
+			targetProxy = CF4357C224ED59660056A743 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF4357A924ED59640056A743 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF4357AA24ED59640056A743 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF4357AE24ED59660056A743 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF4357AF24ED59660056A743 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF4357C824ED59670056A743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF4357C924ED59670056A743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF4357CB24ED59670056A743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF4357CC24ED59670056A743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF4357CE24ED59670056A743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mifos-mobile-ios.app/mifos-mobile-ios";
+			};
+			name = Debug;
+		};
+		CF4357CF24ED59670056A743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mifos-mobile-ios.app/mifos-mobile-ios";
+			};
+			name = Release;
+		};
+		CF4357D124ED59670056A743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mifos-mobile-ios";
+			};
+			name = Debug;
+		};
+		CF4357D224ED59670056A743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "mifos-mobile-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org-mifos.mobile.mifos-mobile-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mifos-mobile-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF43579B24ED59640056A743 /* Build configuration list for PBXProject "mifos-mobile-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF4357C824ED59670056A743 /* Debug */,
+				CF4357C924ED59670056A743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF4357CA24ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF4357CB24ED59670056A743 /* Debug */,
+				CF4357CC24ED59670056A743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF4357CD24ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF4357CE24ED59670056A743 /* Debug */,
+				CF4357CF24ED59670056A743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF4357D024ED59670056A743 /* Build configuration list for PBXNativeTarget "mifos-mobile-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF4357D124ED59670056A743 /* Debug */,
+				CF4357D224ED59670056A743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF43579824ED59640056A743 /* Project object */;
+}
