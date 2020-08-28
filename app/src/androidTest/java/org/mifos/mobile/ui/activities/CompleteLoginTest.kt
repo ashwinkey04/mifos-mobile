@@ -2,7 +2,6 @@ package org.mifos.mobile.ui.activities
 
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.ViewInteraction
@@ -13,13 +12,11 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import androidx.test.runner.AndroidJUnit4
-
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -37,11 +34,11 @@ import org.mifos.mobile.utils.EspressoIdlingResouce
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class LoginSetPasscodeTest {
+class CompleteLoginTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(SplashActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(LoginActivity::class.java)
 
     @Rule
     @JvmField
@@ -59,7 +56,7 @@ class LoginSetPasscodeTest {
     }
 
     @Test
-    fun loginSetPasscodeTest() {
+    fun completeLoginTest() {
         val usernameEditText = onView(
             allOf(
                 childAtPosition(
