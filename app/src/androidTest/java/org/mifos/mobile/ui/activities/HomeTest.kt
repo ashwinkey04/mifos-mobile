@@ -9,11 +9,13 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import androidx.test.runner.AndroidJUnit4
+
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 import org.mifos.mobile.R
 import org.mifos.mobile.utils.EspressoIdlingResouce
 
@@ -52,17 +54,11 @@ class HomeTest {
     fun homeTest() {
 
         val accountsButton: ViewInteraction = getEspressoView(R.id.ll_accounts)
-
         val transferButton: ViewInteraction = getEspressoView(R.id.ll_transfer)
-
         val chargesButton: ViewInteraction = getEspressoView(R.id.ll_charges)
-
         val applyForLoanButton: ViewInteraction = getEspressoView(R.id.ll_apply_for_loan)
-
         val beneficiariesButton: ViewInteraction = getEspressoView(R.id.ll_beneficiaries)
-
         val notificationButton: ViewInteraction = getEspressoView(R.id.menu_notifications)
-
         val buttons: List<ViewInteraction> =
             listOf(
                 notificationButton,

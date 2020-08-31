@@ -2,6 +2,7 @@ package org.mifos.mobile.ui.activities
 
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.ViewInteraction
@@ -12,11 +13,13 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import androidx.test.runner.AndroidJUnit4
+
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -68,7 +71,6 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val passwordEditText = onView(
             allOf(
                 childAtPosition(
@@ -80,7 +82,6 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val showPasswordToggle = onView(
             allOf(
                 withId(R.id.text_input_password_toggle), withContentDescription("Show password"),
@@ -93,7 +94,6 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val loginButton = onView(
             allOf(
                 withId(R.id.btn_login), withText("Login"),
@@ -109,7 +109,6 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val zeroButtonPasscode = onView(
             allOf(
                 withId(R.id.btn_zero), withText("0"),
@@ -122,9 +121,7 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val passcodeLayout: ViewInteraction = onView(withId(R.id.cl_rootview))
-
         val passcodeVisibilityButton = onView(
             allOf(
                 withId(R.id.iv_visibility),
@@ -137,36 +134,20 @@ class CompleteLoginTest {
                 )
             )
         )
-
         val proceedButton = onView(allOf(withId(R.id.btn_save), withText("Proceed")))
-
-        val appCompatButton12 = onView(allOf(withId(R.id.btn_save), withText("Save")))
+        val saveButton = onView(allOf(withId(R.id.btn_save), withText("Save")))
 
         //Test actions
-
         usernameEditText.perform(click(), replaceText("ashwinr"), closeSoftKeyboard())
-
         passwordEditText.perform(click(), replaceText("password"), closeSoftKeyboard())
-
         for (i in 1..2) showPasswordToggle.perform(click())
-
         loginButton.perform(click())
-
         passcodeLayout.check(matches(isDisplayed()))
-
         passcodeVisibilityButton.perform(click())
-
-        passcodeLayout.perform(swipeUp()) //To make the lower part of the screen visible in smaller devices
-
         for (i in 1..4) zeroButtonPasscode.perform(click()) // Inputs passcode as 0000
-
         proceedButton.perform(click())
-
-        passcodeLayout.perform(swipeUp()) //To make the lower part of the screen visible in smaller devices
-
         for (i in 1..4) zeroButtonPasscode.perform(click()) // Inputs passcode as 0000
-
-        appCompatButton12.perform(click())
+        saveButton.perform(click())
     }
 
     private fun childAtPosition(
