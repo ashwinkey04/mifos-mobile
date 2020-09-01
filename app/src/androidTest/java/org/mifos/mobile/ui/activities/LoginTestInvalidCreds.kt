@@ -37,7 +37,7 @@ import org.mifos.mobile.utils.EspressoIdlingResouce
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class CompleteLoginTest {
+class LoginTestInvalidCreds {
 
     @Rule
     @JvmField
